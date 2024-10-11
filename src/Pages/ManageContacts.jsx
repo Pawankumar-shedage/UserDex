@@ -93,6 +93,10 @@ export const ManageContacts = () => {
       console.log("Response: ", response);
 
       if (response.status === 200) {
+        // refresh list
+        setUsersList((prevList) => {
+          return prevList.filter((u) => u.id !== user.id);
+        })
         toast.success("User deleted successfully!");
       } else {
         toast.error("Error deleting user!");
